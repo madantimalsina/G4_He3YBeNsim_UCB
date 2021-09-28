@@ -1,0 +1,10 @@
+/run/initialize
+/run/verbose 1
+/random/setSeeds 238009 238117
+
+/generator/setMode neutrons
+
+/analysis/setFileName YBe_100kEvt_UCB_2inMThickness
+/tracking/verbose 0
+/run/printProgress 10000
+/run/beamOn 100000
