@@ -50,6 +50,7 @@ set(myHe3A_SCRIPTS
   run1.mac
   run2.mac
   vis.mac
+  YBe_NewGenerator.mac
   )
 
 foreach(_script ${myHe3A_SCRIPTS})
