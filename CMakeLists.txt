@@ -46,6 +46,8 @@ set(myHe3A_SCRIPTS
   gui.mac
   init_vis.mac
   plotHisto.C
+  plotHisto_Be.C
+  plotHisto_W.C
   plotNtuple_My_New.C
   run1.mac
   run2.mac
