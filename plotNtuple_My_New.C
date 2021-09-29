@@ -37,7 +37,7 @@ cin >> filename;
   tree->SetBranchAddress("Eabs_inT",&Eabs_inT);
   ntuple->Draw("Eabs_inT");
   TH1* hist = (TH1*) gPad->GetListOfPrimitives()->FindObject("htemp"); 
-  hist->SetTitle("1 in Moderator Thickness"); 
+  //hist->SetTitle("1 in Moderator Thickness"); 
   hist->GetXaxis()->SetTitle("Ek [MeV]"); 
   gPad->Update();
 
