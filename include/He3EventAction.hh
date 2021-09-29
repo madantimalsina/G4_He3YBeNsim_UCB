@@ -52,10 +52,9 @@ class He3EventAction : public G4UserEventAction
     virtual void    EndOfEventAction(const G4Event* event);
     
     void AddAbs(G4double de, G4double dl, G4ThreeVector position, G4double eki_abs, G4double ekf_abs);
-    void AddAbs1(G4double de, G4double dl, G4ThreeVector position);
-    void AddAbs2(G4double de, G4double dl, G4ThreeVector position);
     void AddGap(G4double de, G4double dl);
     void AddBe(G4double eki_be, G4double ekf_be, G4double de, G4ThreeVector position);
+    void AddW(G4double eki_be, G4double ekf_be, G4double de, G4ThreeVector position);
 
   private:
     G4double  fEnergyAbs;
@@ -63,32 +62,22 @@ class He3EventAction : public G4UserEventAction
     G4double  fEnergy_gen;
     G4double  fTrackLAbs; 
     G4double  fTrackLGap;
-    G4double  fEnergyAbs1;
-    G4double  fEnergyAbs2;
-    G4double  fTrackLAbs1; 
-    G4double  fTrackLAbs2; 
-
     G4double fpositionHe3[3];
     G4double fposition_gen[3];
     G4double fpositionHe3c[3];
-    G4double fpositionHe3s1[3];
-    G4double fpositionHe3s2[3];
     
     G4double Eki_Be;
     G4double Ekf_Be;
 
+    G4double Eki_W;
+    G4double Ekf_W;
+
     G4double Eki_abs;
     G4double Ekf_abs;
-
-
-    //G4double  fpositionX;
-    //G4double  fpositionY;
-    //G4double  fpositionZ;
 };
 
 // inline functions
-
-inline void He3EventAction::AddAbs1(G4double de, G4double dl, G4ThreeVector position) {
+inline void He3EventAction::AddAbs(G4double de, G4double dl, G4ThreeVector position, G4double eki_abs, G4double ekf_abs) {
   fEnergyAbs += de; 
   fTrackLAbs += dl;
 
@@ -100,46 +89,13 @@ inline void He3EventAction::AddAbs1(G4double de, G4double dl, G4ThreeVector posi
   fpositionHe3c[1] = position.y();
   fpositionHe3c[2] = position.z();
 
-/*    fpositionX = position.x();
-  fpositionY = position.y();
-  fpositionZ = position.z();*/
-}
-inline void He3EventAction::AddAbs(G4double de, G4double dl, G4ThreeVector position, G4double eki_abs, G4double ekf_abs) {
-  fEnergyAbs1 += de; 
-  fTrackLAbs1 += dl;
-
-  fpositionHe3[0] = position.x();
-  fpositionHe3[1] = position.y();
-  fpositionHe3[2] = position.z();
-
-  fpositionHe3s1[0] = position.x();
-  fpositionHe3s1[1] = position.y();
-  fpositionHe3s1[2] = position.z();
-
   Eki_abs += eki_abs; 
   Ekf_abs += ekf_abs;
 
 }
-inline void He3EventAction::AddAbs2(G4double de, G4double dl, G4ThreeVector position) {
-  fEnergyAbs2 += de; 
-  fTrackLAbs2 += dl;
-
-  fpositionHe3[0] = position.x();
-  fpositionHe3[1] = position.y();
-  fpositionHe3[2] = position.z();
-
-  fpositionHe3s2[0] = position.x();
-  fpositionHe3s2[1] = position.y();
-  fpositionHe3s2[2] = position.z();
-
-}
-
 inline void He3EventAction::AddGap(G4double de, G4double dl) {
   fEnergyGap += de; 
   fTrackLGap += dl;
-  //fpositionHe3[0] = position.x();
-  //fpositionHe3[1] = position.y();
-  //fpositionHe3[2] = position.z();
 
 }
 
@@ -154,6 +110,16 @@ inline void He3EventAction::AddBe(G4double eki_be, G4double ekf_be, G4double de,
 
 }
 
+inline void He3EventAction::AddW(G4double eki_w, G4double ekf_w, G4double de, G4ThreeVector position) {
+  Eki_W = eki_w; 
+  Ekf_W = ekf_w;
+  fEnergy_gen += de; 
+
+  fposition_gen[0] = position.x();
+  fposition_gen[1] = position.y();
+  fposition_gen[2] = position.z();
+
+}
 
 
                      

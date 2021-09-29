@@ -63,11 +63,10 @@ class He3DetectorConstruction : public G4VUserDetectorConstruction
     // get methods
     //
     const G4VPhysicalVolume* GetAbsorberPV() const;
-    const G4VPhysicalVolume* GetAbsorberPV1() const;
-    const G4VPhysicalVolume* GetAbsorberPV2() const;
     const G4VPhysicalVolume* GetGapPV() const;
-    const G4VPhysicalVolume* GetGapPV2() const;
     const G4VPhysicalVolume* GetHoldPV_Beo() const;
+    const G4VPhysicalVolume* GetHoldPV_YDisk() const;
+    const G4VPhysicalVolume* GetHoldPV_W() const;
     
      
   private:
@@ -83,11 +82,9 @@ class He3DetectorConstruction : public G4VUserDetectorConstruction
      
     G4VPhysicalVolume*   fAbsorberPV; // the absorber physical volume
     G4VPhysicalVolume*   fGapPV;      // the gap physical volume
-    G4VPhysicalVolume*   fGapPV2; 
     G4VPhysicalVolume*   fHoldPV;
-    G4VPhysicalVolume*   fAbsorberPV1; 
-    G4VPhysicalVolume*   fAbsorberPV2;
     G4VPhysicalVolume*   fHoldPV_Beo;
+    G4VPhysicalVolume*   fHoldPV_YDisk;
     
     G4bool  fCheckOverlaps; // option to activate checking of volumes overlaps
 };
@@ -97,21 +94,17 @@ class He3DetectorConstruction : public G4VUserDetectorConstruction
 inline const G4VPhysicalVolume* He3DetectorConstruction::GetAbsorberPV() const { 
   return fAbsorberPV; 
 }
-inline const G4VPhysicalVolume* He3DetectorConstruction::GetAbsorberPV1() const { 
-  return fAbsorberPV1; 
-}
-inline const G4VPhysicalVolume* He3DetectorConstruction::GetAbsorberPV2() const { 
-  return fAbsorberPV2; 
-}
-
 inline const G4VPhysicalVolume* He3DetectorConstruction::GetGapPV() const  { 
   return fGapPV; 
 }
-inline const G4VPhysicalVolume* He3DetectorConstruction::GetGapPV2() const  { 
-  return fGapPV2; 
-}
 inline const G4VPhysicalVolume* He3DetectorConstruction::GetHoldPV_Beo() const  { 
   return fHoldPV_Beo; 
+}
+inline const G4VPhysicalVolume* He3DetectorConstruction::GetHoldPV_YDisk() const  { 
+  return fHoldPV_YDisk; 
+}
+inline const G4VPhysicalVolume* He3DetectorConstruction::GetHoldPV_W() const { 
+  return fHoldPV; 
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
