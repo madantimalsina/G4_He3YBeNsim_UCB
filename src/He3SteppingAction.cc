@@ -102,14 +102,6 @@ void He3SteppingAction::UserSteppingAction(const G4Step* step)
     G4ThreeVector position = track->GetPosition();
     fEventAction->AddAbs(edep,stepLength, position, energy_i, energy_f);
   }
-    if ( volume == fDetConstruction->GetAbsorberPV1() ) {
-    G4ThreeVector position = track->GetPosition();
-    fEventAction->AddAbs1(edep,stepLength, position);
-  }
-    if ( volume == fDetConstruction->GetAbsorberPV2() ) {
-    G4ThreeVector position = track->GetPosition();
-    fEventAction->AddAbs2(edep,stepLength, position);
-  }
   
   if ( volume == fDetConstruction->GetGapPV() ) {
     //G4ThreeVector position = track->GetPosition();
@@ -121,6 +113,11 @@ void He3SteppingAction::UserSteppingAction(const G4Step* step)
      fEventAction->AddBe(energy_i, energy_f,edep, position);
   }
 
+  if ( volume == fDetConstruction->GetHoldPV_W()){
+    G4ThreeVector position = track->GetPosition();
+    //auto energy_n = neutron_energy;
+     fEventAction->AddW(energy_i, energy_f,edep, position);
+  }
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

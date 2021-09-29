@@ -82,8 +82,6 @@ He3DetectorConstruction::He3DetectorConstruction()
  : G4VUserDetectorConstruction(),
    fAbsorberPV(nullptr),
    fGapPV(nullptr),
-   fAbsorberPV1(nullptr),
-   fAbsorberPV2(nullptr),
    fCheckOverlaps(true)
 {
 }
@@ -612,7 +610,7 @@ G4VPhysicalVolume* He3DetectorConstruction::DefineVolumes()
                         YMaterial,                 //its material
                         "YBeSource_YDisk"); 
 
-  fHoldPV
+  fHoldPV_YDisk
    = new G4PVPlacement(
                  0,                // no rotation
                  //G4ThreeVector(0., 0., -(1.23*cm)),

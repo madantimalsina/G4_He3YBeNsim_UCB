@@ -64,6 +64,9 @@ He3RunAction::He3RunAction()
   analysisManager->CreateH1("Eabs_inT","Edep in center tube", 100, 0., 1*MeV);
   analysisManager->CreateH1("Ek_f_Be","KE out of Be", 20, 0., 200*keV);
   analysisManager->CreateH1("Ek_f_Be_detected","KE out of Be and detected", 20, 0., 200*keV);
+  analysisManager->CreateH1("Ek_f_W","KE out of W", 20, 0., 200*keV);
+  analysisManager->CreateH1("Ek_f_W_detected","KE out of W and detected", 20, 0., 200*keV);
+
   //analysisManager->CreateH1("Ek_i_abs","KE reach in He3 tube", 100, 0., 1*MeV);
 
   analysisManager->CreateH2("Center_xy","xy central tube", 250, -500., 500., 1000, -500., 500.);
@@ -82,6 +85,8 @@ He3RunAction::He3RunAction()
   analysisManager->CreateNtupleDColumn("Z_He3"); // z-position He3 tube
   analysisManager->CreateNtupleDColumn("Ek_i_Be"); // initial kinetic energy after the step
   analysisManager->CreateNtupleDColumn("Ek_f_Be"); // final kinetic energy after the step
+  analysisManager->CreateNtupleDColumn("Ek_f_W"); // initial kinetic energy after the step
+  analysisManager->CreateNtupleDColumn("Ek_f_W_Detected");
   analysisManager->CreateNtupleDColumn("Ek_i_abs"); // initial kinetic energy after the step
   analysisManager->CreateNtupleDColumn("Ek_f_abs"); // final kinetic energy after the step
   analysisManager->CreateNtupleDColumn("Ek_n"); // K.E of neutron from generator

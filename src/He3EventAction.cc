@@ -48,14 +48,12 @@ He3EventAction::He3EventAction()
    fEnergy_gen(0.),
    fTrackLAbs(0.),
    fTrackLGap(0.),
-   fEnergyAbs1(0.),
-   fEnergyAbs2(0.),
-   fTrackLAbs1(0.),
-   fTrackLAbs2(0.),
    fpositionHe3{0.},
    fposition_gen{0.},
    Eki_Be(0.),
    Ekf_Be(0.),
+   Eki_W(0.),
+   Ekf_W(0.),
    Eki_abs(0.),
    Ekf_abs(0.)
 
@@ -76,17 +74,12 @@ void He3EventAction::BeginOfEventAction(const G4Event* /*event*/)
   fEnergy_gen = 0.;
   fTrackLAbs = 0.;
   fTrackLGap = 0.;
-  fEnergyAbs1 = 0.;
-  fEnergyAbs2 = 0.;
-  fTrackLAbs1 = 0.;
-  fTrackLAbs2 = 0.;
   Ekf_Be = 0.;
   Eki_Be = 0.;
+  Ekf_W = 0.;
+  Eki_W = 0.;
   Ekf_abs = 0.;
   Eki_abs = 0.;
-  //fpositionX = 0.;
-  //fpositionY = 0.;
-  //fpositionZ = 0.;
   fpositionHe3[0] = 0.0;
   fpositionHe3[1] = 0.0;
   fpositionHe3[2] = 0.0;
@@ -123,6 +116,8 @@ void He3EventAction::EndOfEventAction(const G4Event* event)
          if (fEnergyAbs > 0.)  analysisManager->FillH1(2, fEnergyAbs);
          if (Ekf_Be > 0.) analysisManager->FillH1(3, Ekf_Be); 
          if (Ekf_Be > 0. && fEnergyAbs > 0.) analysisManager->FillH1(4, Ekf_Be);
+         if (Ekf_W > 0.) analysisManager->FillH1(5, Ekf_W); 
+         if (Ekf_W > 0. && fEnergyAbs > 0.) analysisManager->FillH1(6, Ekf_W);
        } 
 
      //filling 2D histogram --> Central tube
@@ -139,7 +134,7 @@ void He3EventAction::EndOfEventAction(const G4Event* event)
   // fill ntuple
   analysisManager->FillNtupleDColumn(0, fEnergyAbs);
   analysisManager->FillNtupleDColumn(1, fEnergyGap);
-  analysisManager->FillNtupleDColumn(2, fEnergyAbs1);
+  analysisManager->FillNtupleDColumn(2, fEnergyAbs);
 
   // Central tubes with cuts 
   if ( fpositionHe3[0] > (-4.0*25.4)  && fpositionHe3[0] < (4.0*25.4) &&
@@ -157,9 +152,14 @@ void He3EventAction::EndOfEventAction(const G4Event* event)
        std::sqrt( ((fpositionHe3[1] - 0.0) * (fpositionHe3[1] - 0.0)) + ((fpositionHe3[2] - 0.0) * (fpositionHe3[2] - 0.0)) ) <= 11.8872
      )
   {
-  if (Ekf_Be > 0.) analysisManager->FillNtupleDColumn(8, Ekf_Be);} // final kinetic energy after the step
-  if (Eki_abs > 0.) analysisManager->FillNtupleDColumn(9, Eki_abs); // initial kinetic energy after the step
-  if (Ekf_abs > 0.)analysisManager->FillNtupleDColumn(10, Ekf_abs);
+  if (Ekf_Be > 0.) analysisManager->FillNtupleDColumn(8, Ekf_Be);
+  if (Ekf_W > 0.) analysisManager->FillNtupleDColumn(9, Ekf_W);
+  if (Ekf_W > 0. && fEnergyAbs > 0.) analysisManager->FillNtupleDColumn(10, Ekf_W);
+
+  } // final kinetic energy after the step
+  
+  if (Eki_abs > 0.) analysisManager->FillNtupleDColumn(11, Eki_abs); // initial kinetic energy after the step
+  if (Ekf_abs > 0.)analysisManager->FillNtupleDColumn(12, Ekf_abs);
   
   //analysisManager->AddNtupleRow();  
   

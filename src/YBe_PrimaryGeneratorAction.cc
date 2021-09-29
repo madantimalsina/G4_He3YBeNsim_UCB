@@ -188,11 +188,11 @@ void YBe_PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   
     // adding Ntuples
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-    analysisManager->FillNtupleDColumn(11, neutron_energy);
-    analysisManager->FillNtupleDColumn(12, neutron_angle);
-    analysisManager->FillNtupleDColumn(13, event_position.x());
-    analysisManager->FillNtupleDColumn(14, event_position.y());
-    analysisManager->FillNtupleDColumn(15, event_position.z());
+    analysisManager->FillNtupleDColumn(13, neutron_energy);
+    analysisManager->FillNtupleDColumn(14, neutron_angle);
+    analysisManager->FillNtupleDColumn(15, event_position.x());
+    analysisManager->FillNtupleDColumn(16, event_position.y());
+    analysisManager->FillNtupleDColumn(17, event_position.z());
     analysisManager->AddNtupleRow();  
 
     //G4cout << "neutron energy  =  " << neutron_energy << "  neutron_angle = "<< neutron_angle << "   event position = "<< event_position<<G4endl;
