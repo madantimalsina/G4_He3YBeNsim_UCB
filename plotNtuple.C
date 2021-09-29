@@ -39,7 +39,8 @@ cin >> filename;
   tree->SetBranchAddress("Ek_f_Be",&Ek_f_Be);
   ntuple->Draw("Ek_f_Be");
   TH1* hist = (TH1*) gPad->GetListOfPrimitives()->FindObject("htemp"); 
-  hist->SetTitle("2 in Moderator Thickness"); 
+  gStyle->SetOptStat(11111111);
+  hist->SetTitle("2 inch Moderator Thickness"); 
   hist->GetXaxis()->SetTitle("Ek [MeV]"); 
   gPad->Update();
   //ntuple->Draw("Ek_f_Be");
@@ -55,16 +56,19 @@ cin >> filename;
     z1_T++;}
   } 
 
-      cout << "\n" << endl;
-    cout << "Simulated Events: " << nentries << endl;
-     cout << "\n" << endl;
-    cout << "NOW INSIDE HE3 TUBES:::::.\n" << endl;
-    cout << "Center Tube: " << y1_T << endl;
-    //cout << "Left Side Tube1: " << y2_T << endl;
-    //cout << "Right Side Tube2: " << y3_T << endl; 
-    //cout << "Total = "<< y1_T + y2_T + y3_T << endl;
+  TCanvas* c2_T = new TCanvas("c2_T", "", 20, 20, 800, 800);
+  //gPad->SetLogy(1);
+  gPad->SetGrid();
+  Double_t Ek_n;
+  tree->SetBranchAddress("Ek_n",&Ek_n);
+  ntuple->Draw("Ek_n");
+  TH1* hist1 = (TH1*) gPad->GetListOfPrimitives()->FindObject("htemp"); 
+  gStyle->SetOptStat(11111111);
+  hist1->SetTitle("2 inch Moderator Thickness"); 
+  hist1->GetXaxis()->SetTitle("Ek [MeV]"); 
+  gPad->Update();
 
     cout << "\n" << endl;
-    cout << "nHits (Edep >= 0.15)" << endl;
-    cout << "Center Tube: " << z1_T << endl;
+    cout << "Simulated Events: " << nentries << endl;
+    cout << "\n" << endl;
 }
