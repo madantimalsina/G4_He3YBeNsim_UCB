@@ -49,6 +49,7 @@ set(myHe3A_SCRIPTS
   plotHisto_Be.C
   plotHisto_W.C
   plotNtuple_My_New.C
+  plotNtuple.C
   run1.mac
   run2.mac
   vis.mac
